@@ -76,11 +76,11 @@ Renk sabitliği uygulanmış görüntüler ile model performansı tekrar test ed
 
 ### 8. **Sonuçların Karşılaştırılması ve Raporlama**
 
-**Normal Test Seti**: Model, bu set üzerinde en yüksek doğruluk oranına ulaşmıştır.
+**Normal Test Seti**: Model, bu set üzerinde en yüksek doğruluk oranına ulaşmıştır. Normal veriler üzerinde eğitildiği için model, bu tür verilere en iyi şekilde uyum sağlamıştır.
 
-**Manipüle Edilmiş Test Seti**: Parlaklık ve bulanıklaştırma manipülasyonları sonrası doğruluk oranı bir miktar düşüş göstermiştir.
+**Manipüle Edilmiş Test Seti**: : Parlaklık artırma ve bulanıklaştırma manipülasyonları sonrası modelin doğruluk oranında önemli bir düşüş gözlemlenmiştir. Bu durum, modelin manipülasyonlar karşısında dayanıklı olmadığını göstermektedir.
 
-**Renk Sabitliği Test Seti**: Performans artışı sağlanmış ve manipülasyon etkisi azalmıştır.
+**Renk Sabitliği Test Seti**:  Renk sabitliği algoritması uygulanan test setinde beklenen performans artışı gerçekleşmemiştir. Bunun nedeni, modelin eğitim aşamasında renk sabitliği uygulanmış görüntülerle eğitilmemiş olmasıdır. 
 
 ## **💻 Kullanılan Teknolojiler ve Kütüphaneler**
 
@@ -94,20 +94,42 @@ Python
 
 - **Matplotlib**: Sonuçların görselleştirilmesi için kullanılmıştır.
 
-## **📊 Proje Çıktıları ve Analiz**
-
-**Normal Test Seti**: En yüksek doğruluk oranı elde edilmiştir.
-
-**Manipüle Edilmiş Test Seti**: Manipülasyonlar sonrası doğruluk oranında düşüş gözlemlenmiştir.
-
-**Renk Sabitliği Test Seti**: Performans artışı sağlanmış ve manipülasyon etkisi azalmıştır.
-
 ## **📈 Sonuç ve Öneriler**
 
-Bu proje, CNN modellerinin görüntü sınıflandırmadaki gücünü ve manipülasyonlara karşı dayanıklılığını analiz etmiştir. Gelecekteki çalışmalar için şu öneriler sunulabilir:
+Bu proje, Convolutional Neural Network (CNN) modellerinin görüntü sınıflandırma görevlerindeki başarısını ve manipülasyonlar ile renk sabitliği gibi dış faktörlerin model performansı üzerindeki etkisini kapsamlı bir şekilde incelemiştir. Elde edilen sonuçlar, modelin manipülasyonlar karşısında dayanıklılığının artırılması gerektiğini ve renk sabitliği algoritmalarının daha etkili bir şekilde entegre edilmesinin önemini göstermektedir.
 
-Eğitim setine manipülasyonlu görüntüler eklenerek modelin dayanıklılığı artırılabilir.
-Daha büyük ve çeşitli veri setleri ile model yeniden eğitilebilir.
-Farklı renk sabitliği algoritmaları test edilerek daha etkili sonuçlar elde edilebilir.
+Gelecekteki çalışmalar için şu öneriler sunulabilir:
 
-Kaggle Linki: https://www.kaggle.com/code/bilgeesinakbaba/image-classification-with-cnn
+**Eğitim Setinin Manipülasyonlu Görüntülerle Zenginleştirilmesi**:
+Eğitim setine manipülasyonlu (parlaklık artırılmış, bulanıklaştırılmış) görüntülerin dahil edilmesi, modelin bu tür değişikliklere karşı dayanıklılığını artırabilir. Bu, modelin gerçek hayatta karşılaşabileceği veri çeşitliliği ile başa çıkma yeteneğini geliştirecektir. 
+
+**Daha Büyük ve Çeşitli Veri Setleri Kullanımı**:
+Veri setinin boyutu ve çeşitliliği artırılarak modelin genel performansı iyileştirilebilir. Daha fazla sınıf içeren ve çeşitli aydınlatma, açı, kalite gibi faktörlere sahip görüntüler içeren bir veri seti kullanmak modelin daha genel özellikler öğrenmesini sağlayabilir.
+
+**Alternatif Renk Sabitliği Algoritmalarının Test Edilmesi**:
+Gray World algoritması yerine daha gelişmiş ve etkili renk sabitliği algoritmaları test edilebilir. 
+
+**Transfer Learning ile Model Performansının Artırılması**:
+Önceden eğitilmiş bir CNN modeli (örneğin, ResNet, VGG veya EfficientNet) kullanarak transfer öğrenimi yapılabilir. Bu, daha küçük veri setleri üzerinde bile yüksek performans elde etmeyi sağlar. Bu modeller, genellikle geniş ve çeşitli veri setleri üzerinde eğitildiği için manipülasyonlara ve renk değişikliklerine karşı daha dayanıklıdır. Eğitim süresi önemli ölçüde azaltılabilir.
+
+**Model Mimarisi Optimizasyonu**:
+Daha derin ve karmaşık CNN mimarileri test edilebilir.
+Dropout oranları optimize edilerek aşırı öğrenme (overfitting) riski azaltılabilir.
+Farklı optimizasyon algoritmaları (örneğin, SGD, RMSprop) kullanılarak eğitim performansı iyileştirilebilir.
+
+**Farklı Manipülasyon Tekniklerinin Entegrasyonu**:
+Parlaklık ve bulanıklaştırma dışındaki manipülasyonlar da (örneğin, döndürme, kırpma, renk değişimi) test edilebilir.
+
+**Ayrıntılı Performans Analizi ve Görselleştirme**:
+Modelin hangi sınıflarda daha iyi veya kötü performans gösterdiği detaylı bir şekilde analiz edilmelidir.
+Görselleştirme teknikleri (örneğin, t-SNE, confusion matrix) kullanılarak modelin zayıf ve güçlü yönleri daha iyi anlaşılabilir.
+
+**Gerçek Zamanlı Uygulamalar için Optimize Edilmesi**:
+Modelin daha hızlı ve hafif bir versiyonu oluşturularak mobil veya IoT cihazlarda kullanımı sağlanabilir.
+Quantization ve pruning gibi tekniklerle model boyutu küçültülebilir.
+
+**Manipülasyon ve Renk Sabitliği için Özel Eğitim Süreçleri**:
+Manipüle edilmiş ve renk sabitliği uygulanmış görüntülerle ayrı ayrı eğitim yapılarak bu tür durumlar için özel modeller oluşturulabilir.
+Ensemblling (birden fazla modeli birleştirme) yöntemleriyle bu modellerin sonuçları birleştirilebilir.
+
+## Kaggle Linki: https://www.kaggle.com/code/bilgeesinakbaba/image-classification-with-cnn
